@@ -23,21 +23,11 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: mvn dependency:go-offline
-      - run: mvn package
+      - run: mvn clean package docker:build
+      
       - save_cache:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
-      # run tests!
-      - run: mvn integration-test
-      # use a primary image that already has Docker (recommended)
-      # or install it during a build like we do here
-     
-      # build and push Docker image
-      - run: |
-          TAG=0.1.$CIRCLE_BUILD_NUM
-          docker build -t   vm-public/circleci-demo-docker:$TAG .      # (3)
-          docker login -u $DOCKER_USER -p $DOCKER_PASS         # (4)
-          docker push CircleCI-Public/circleci-demo-docker:$TAG
+
