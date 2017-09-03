@@ -6,9 +6,10 @@ version: 2
 jobs:
   build:
     docker:
+      machine: true
       # specify the version you desire here
      # - image: circleci/openjdk:8-jdk
-      - image: docker:17.05.0-ce-git
+      #- image: docker:17.05.0-ce-git
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -23,7 +24,7 @@ jobs:
     
     steps:
       - checkout
-      - setup_remote_docker   # (2)
+     # - setup_remote_docker   # (2)
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -31,15 +32,15 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-     # - run: mvn dependency:go-offline
-     # - run: mvn package
+      - run: mvn dependency:go-offline
+      - run: mvn package
       - save_cache:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
       # run tests!
-      #- run: mvn integration-test
+      - run: mvn integration-test
       # use a primary image that already has Docker (recommended)
       # or install it during a build like we do here
      
