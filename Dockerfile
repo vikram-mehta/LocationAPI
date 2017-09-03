@@ -1,4 +1,4 @@
-FROM dockerfile/java:oracle-java8
+FROM openjdk:8
 
 ENTRYPOINT ["/usr/bin/java", "-jar", "/usr/share/myservice/swagger-spring-1.0.0.jar"]
 
