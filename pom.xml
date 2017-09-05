@@ -40,7 +40,7 @@
                     <verbose>true</verbose>
                     <images>
                         <image>
-                            <name>vikram/sb1</name>
+                            <name>vikramm/sb1</name>
                             <build>
                                 <dockerFile>Dockerfile</dockerFile>
                                 <assembly>
