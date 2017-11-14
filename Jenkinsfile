@@ -23,8 +23,9 @@ node {
    stage('dev2') {
     echo 'deployed to Dev2'
    }
+}
    input 'Should we deploy to ITCA??'
    stage('itca') {
     echo 'deployed to Itca'
    }
-}
+
