@@ -24,8 +24,14 @@ node {
     echo 'deployed to Dev2'
    }
 }
-   input 'Should we deploy to ITCA??'
-   stage('itca') {
-    echo 'deployed to Itca'
-   }
+stage('ITCA') {
+  input "Deploy to ITCA?"
+  milestone()
+  lock('Deployment') {
+    node {
+      echo "Deploying to ITCA"
+    }
+  }
+}
+
 
