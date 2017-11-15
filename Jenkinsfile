@@ -24,14 +24,22 @@ node {
     echo 'deployed to Dev2'
    }
 }
-stage('ITCA') {
   input "Deploy to ITCA?"
-  milestone()
-  lock('Deployment') {
-    node {
-      echo "Deploying to ITCA"
-    }
-  }
-}
+stage('ITCA') {
 
+ // milestone()
+ // lock('Deployment') {
+//    node {
+     echo "Deploying to ITCA"
+//    }
+//  }
+}
+input "Deploy to PRDR?"
+stage('PRDR') {
+ echo "Deploying to PRDR"
+}
+input "Deploy to PROD?"
+stage('PROD') {
+ echo "Deploying to PROD"
+}
 
