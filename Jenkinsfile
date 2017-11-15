@@ -1,3 +1,4 @@
+pipeline {
 node {
    def mvnHome
    stage('Preparation') { // for display purposes
@@ -42,4 +43,4 @@ input "Deploy to PROD?"
 stage('PROD') {
  echo "Deploying to PROD"
 }
-
+}
